@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+OCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -6,23 +6,23 @@
   <title>Invitación XV - Eli</title>
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
-    html,body{height:100%;background:#000;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue','Courier New',monospace}
+    html,body{height:100%;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',sans-serif}
 
     .pantalla{
       width:100%;
       min-height:100vh;
       background-position:center center;
       background-repeat:no-repeat;
-      background-size:cover;   /* 👈 siempre cover */
+      background-size:cover;
+      background-color:#d8e7f5; /* 👈 color de relleno suave */
       display:flex;
       flex-direction:column;
       justify-content:center;
       align-items:center;
-      position:relative;
     }
 
     /* Contador */
-    #contador{ text-align:center; color:#000; font-weight:700; padding:20px; }
+    #contador{ text-align:center; color:#000; font-weight:700; padding:20px; background:rgba(255,255,255,0.7); border-radius:12px; }
     #contador .tiempo{ display:flex; flex-wrap:wrap; justify-content:center; align-items:flex-end; gap:20px; }
     #contador .bloque{ display:flex; flex-direction:column; align-items:center; min-width:70px; }
     #contador .numero{ font-size:3rem; line-height:1; }
@@ -67,10 +67,14 @@
 </head>
 <body>
 
-  <div class="pantalla pag1" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429533318156318/pag1.png?ex=68bf89a7&is=68be3827&hm=be6fad5882fb4d45ab54f5a205263c0bd0370c7814cd2e45be209ba33c5ec50a&');"></div>
-  <div class="pantalla pag2" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429532756377630/pag2.png?ex=68bf89a7&is=68be3827&hm=a0456fff9bd68c49a8870b29ade8ac3defd799ebb12704c272dffafd602d7a36&');"></div>
+  <!-- Página 1 -->
+  <div class="pantalla" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429533318156318/pag1.png?ex=68bf89a7&is=68be3827&hm=be6fad5882fb4d45ab54f5a205263c0bd0370c7814cd2e45be209ba33c5ec50a&');"></div>
 
-  <div class="pantalla pag3" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429532416512071/pag3.png?ex=68bf89a7&is=68be3827&hm=727703b8d5a4cc8516322f2739728d5a35422b33877b44aa14a583285107f3d5&');">
+  <!-- Página 2 -->
+  <div class="pantalla" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429532756377630/pag2.png?ex=68bf89a7&is=68be3827&hm=a0456fff9bd68c49a8870b29ade8ac3defd799ebb12704c272dffafd602d7a36&');"></div>
+
+  <!-- Página 3 con contador -->
+  <div class="pantalla" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429532416512071/pag3.png?ex=68bf89a7&is=68be3827&hm=727703b8d5a4cc8516322f2739728d5a35422b33877b44aa14a583285107f3d5&');">
     <div id="contador">
       <div class="tiempo">
         <div class="bloque"><div id="dias" class="numero">00</div><div class="etiqueta">Días</div></div>
@@ -84,8 +88,10 @@
     </div>
   </div>
 
-  <div class="pantalla pag4" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429531921580173/pag4.png?ex=68bf89a7&is=68be3827&hm=94fc62771943b0150b73c80f90f07ed6c22270f36bc6c1bd2d2c5bd476cb6cf4&');"></div>
+  <!-- Página 4 -->
+  <div class="pantalla" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429531921580173/pag4.png?ex=68bf89a7&is=68be3827&hm=94fc62771943b0150b73c80f90f07ed6c22270f36bc6c1bd2d2c5bd476cb6cf4&');"></div>
 
+  <!-- Galería -->
   <div class="pantalla p5">
     <div class="galeria">
       <div class="frame"><img src="https://cdn.discordapp.com/attachments/1414429405756919828/1414429490649497672/foto1.jpg?ex=68bf899d&is=68be381d&hm=a7bc4064a8ccbdb7eba7ea54d1c6502b4b94af53f048f8df92fc08dadaff9644&" alt="Foto 1"></div>
@@ -95,6 +101,7 @@
     </div>
   </div>
 
+  <!-- Página 6 con alias -->
   <div class="pantalla p6" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429535151067188/pag6.png?ex=68bf89a8&is=68be3828&hm=e72d35901088c045f988d05158344256af7017bec30923e8c30025045cef8a83&');">
     <button onclick="abrirModal()">Ver Alias</button>
   </div>
@@ -108,8 +115,10 @@
     </div>
   </div>
 
-  <div class="pantalla pag7" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429534689689820/pag7.png?ex=68bf89a7&is=68be3827&hm=19e30318a3d46ea247facc142cde26689eb0702ed92d9445beaad92adf8dffcc&');"></div>
+  <!-- Página 7 -->
+  <div class="pantalla" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429534689689820/pag7.png?ex=68bf89a7&is=68be3827&hm=19e30318a3d46ea247facc142cde26689eb0702ed92d9445beaad92adf8dffcc&');"></div>
 
+  <!-- Página 8 con encuesta -->
   <div class="pantalla p8" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429534266200155/pag8.png?ex=68bf89a7&is=68be3827&hm=e41451ecddd5cd77034eff65e6603cd0624a56e00c3498a4a00ae46f42fcb3bb&');">
     <form id="encuesta" novalidate>
       <label><input type="radio" name="asistencia" value="¡Si, Confirmo!"> ¡Si, Confirmo!</label>
@@ -130,7 +139,8 @@
     </form>
   </div>
 
-  <div class="pantalla pag9" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429533863678084/pag9.png?ex=68bf89a7&is=68be3827&hm=913c2c76950905cc73d8c8e4c5298a907e9337505e146d52e6aaa07213ccc7dc&');"></div>
+  <!-- Página 9 -->
+  <div class="pantalla" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429533863678084/pag9.png?ex=68bf89a7&is=68be3827&hm=913c2c76950905cc73d8c8e4c5298a907e9337505e146d52e6aaa07213ccc7dc&');"></div>
 
   <script>
     function actualizarContador(){
