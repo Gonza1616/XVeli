@@ -10,10 +10,10 @@
 
     .pantalla {
       width:100%;
-      min-height:100vh;   /* 👈 antes era height:100vh */
+      min-height:100vh;
       background-position:center;
       background-repeat:no-repeat;
-      background-size:cover;
+      background-size:cover;  /* 👈 siempre cubrir pantalla */
       display:flex;
       justify-content:center;
       align-items:center;
@@ -69,10 +69,9 @@
 
     /* ===== Responsivo ===== */
     @media (max-width:768px){
-      .pantalla { background-size:contain; }
-      .galeria { grid-template-columns:1fr; }
-      #contador .numero { font-size:2.5rem; }
-      #contador .etiqueta { font-size:1rem; }
+      #contador .numero { font-size:2rem; }
+      #contador .etiqueta { font-size:0.9rem; }
+      #contador .tiempo { gap:10px; }
     }
   </style>
 </head>
@@ -203,6 +202,8 @@
   </script>
 </body>
 </html>
+
+
 
 
 
