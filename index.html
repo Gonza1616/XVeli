@@ -2,175 +2,87 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=1200, initial-scale=1, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Invitación XV - Eli</title>
-<style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html, body {
-    height:100%;
-    overflow-x:hidden;
-    font-family:'Courier New', Courier, monospace;
-    font-variant-numeric: tabular-nums;
-  }
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html, body { height:100%; font-family: 'Courier New', monospace; background:#000; }
 
-  .pantalla{
-    width:100%;
-    height:100vh;
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    position:relative;
-    overflow:hidden;
-  }
-
-  /* ===== Contador ===== */
-  #contador{
-    position:absolute;
-    top:50%; left:50%;
-    transform:translate(-50%, -50%);
-    text-align:center;
-    color:#000;
-    font-weight:bold;
-  }
-  #contador .tiempo{
-    display:flex;
-    justify-content:center;
-    align-items:flex-end;
-    flex-wrap:wrap;
-    gap:20px;
-  }
-  #contador .bloque{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    min-width:80px;
-  }
-  #contador .numero{ font-size:6rem; }
-  #contador .etiqueta{ font-size:1.5rem; margin-top:10px; }
-  #contador .separador{ font-size:5rem; margin-bottom:25px; }
-
-  /* ===== Galería ===== */
-  .p5{
-    background:#fff;
-    padding:40px 0;
-    height:auto;
-    min-height:100vh;
-  }
-  .galeria{
-    width:min(1100px, 90%);
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:20px;
-  }
-  .frame{
-    aspect-ratio:3/4;
-    border-radius:16px;
-    overflow:hidden;
-    box-shadow:0 6px 20px rgba(0,0,0,.18);
-  }
-  .frame img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-  }
-
-  /* ===== Botón Alias ===== */
-  .p6 button{
-    position:absolute;
-    bottom:20px;
-    padding:12px 20px;
-    font-size:1rem;
-    background:#000;
-    color:#fff;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-  }
-
-  /* ===== Modal ===== */
-  .modal{
-    display:none;
-    position:fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    background:rgba(0,0,0,0.7);
-    justify-content:center;
-    align-items:center;
-    z-index:1000;
-    padding:20px;
-  }
-  .modal-content{
-    background:#fff;
-    padding:20px;
-    border-radius:12px;
-    text-align:center;
-    width:100%;
-    max-width:400px;
-    font-size:1rem;
-  }
-
-  /* ===== Encuesta ===== */
-  .p8 form{
-    position:absolute;
-    top:50%; left:50%;
-    transform:translate(-50%, -50%);
-    width:90%;
-    max-width:500px;
-    background:rgba(255,255,255,0.95);
-    padding:20px;
-    border-radius:16px;
-    box-shadow:0 6px 20px rgba(0,0,0,0.2);
-    font-size:1rem;
-  }
-  .p8 form label{ font-size:0.95rem; }
-
-  /* ===== Responsivo ===== */
-  @media (max-width: 768px){
-    /* Las pantallas ya no fuerzan 100vh */
-    .pantalla{
-      height:auto;
-      min-height:100vh; /* asegura que no quede demasiado chico */
-      background-size:contain; /* muestra la imagen entera */
+    .pantalla {
+      width:100%;
+      min-height:100vh;   /* 👈 antes era height:100vh */
+      background-position:center;
+      background-repeat:no-repeat;
+      background-size:cover;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      position:relative;
+      flex-direction:column;
     }
 
-    #contador .numero{ font-size:3.5rem; }
-    #contador .separador{ font-size:2.5rem; margin-bottom:10px; }
-    #contador .bloque{ min-width:70px; }
+    /* ===== Contador ===== */
+    #contador { text-align:center; color:#000; font-weight:bold; }
+    #contador .tiempo {
+      display:flex; justify-content:center; align-items:flex-end; flex-wrap:wrap; gap:20px;
+    }
+    #contador .bloque { display:flex; flex-direction:column; align-items:center; min-width:70px; }
+    #contador .numero { font-size:4rem; }
+    #contador .etiqueta { font-size:1.2rem; margin-top:5px; }
+    #contador .separador { font-size:3rem; margin-bottom:10px; }
 
-    .galeria{ grid-template-columns:1fr; }
+    /* ===== Galería ===== */
+    .p5 { background:#fff; padding:40px 0; }
+    .galeria {
+      width:min(1100px, 90%); margin:auto;
+      display:grid; grid-template-columns:repeat(2, 1fr); gap:20px;
+    }
+    .frame { aspect-ratio:3/4; border-radius:16px; overflow:hidden; box-shadow:0 6px 20px rgba(0,0,0,.18); }
+    .frame img { width:100%; height:100%; object-fit:cover; }
 
-    .p6 button{ 
-      font-size:0.9rem; 
-      padding:10px 16px; 
-      bottom:10px; 
+    /* ===== Botón Alias ===== */
+    .p6 button {
+      margin-top:auto;
+      margin-bottom:20px;
+      padding:12px 20px; font-size:1rem;
+      background:#000; color:#fff; border:none; border-radius:8px;
     }
 
-    .p8 form{ font-size:0.9rem; padding:16px; }
-    .p8 form button{ width:100%; }
-    .p8 form div[style]{ 
-      flex-direction:column; 
-      gap:10px; 
+    /* ===== Modal ===== */
+    .modal {
+      display:none; position:fixed; top:0; left:0;
+      width:100%; height:100%; background:rgba(0,0,0,0.7);
+      justify-content:center; align-items:center; z-index:1000;
     }
-  }
+    .modal-content {
+      background:#fff; padding:20px; border-radius:12px;
+      text-align:center; width:90%; max-width:400px;
+    }
 
-  @media (max-width: 480px){
-    #contador .numero{ font-size:2.5rem; }
-    #contador .etiqueta{ font-size:1rem; }
-    #contador .separador{ font-size:2rem; }
-  }
-</style>
+    /* ===== Encuesta ===== */
+    .p8 form {
+      width:90%; max-width:500px;
+      background:rgba(255,255,255,0.95);
+      padding:20px; border-radius:16px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.2);
+    }
+
+    /* ===== Responsivo ===== */
+    @media (max-width:768px){
+      .pantalla { background-size:contain; }
+      .galeria { grid-template-columns:1fr; }
+      #contador .numero { font-size:2.5rem; }
+      #contador .etiqueta { font-size:1rem; }
+    }
+  </style>
 </head>
 <body>
-  <div class="pantalla" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429533318156318/pag1.png?ex=68bf89a7&is=68be3827&hm=be6fad5882fb4d45ab54f5a205263c0bd0370c7814cd2e45be209ba33c5ec50a&');"></div>
-  <div class="pantalla" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429532756377630/pag2.png?ex=68bf89a7&is=68be3827&hm=a0456fff9bd68c49a8870b29ade8ac3defd799ebb12704c272dffafd602d7a36&');"></div>
 
+  <div class="pantalla pag1" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429533318156318/pag1.png?ex=68bf89a7&is=68be3827&hm=be6fad5882fb4d45ab54f5a205263c0bd0370c7814cd2e45be209ba33c5ec50a&');"></div>
+  <div class="pantalla pag2" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429532756377630/pag2.png?ex=68bf89a7&is=68be3827&hm=a0456fff9bd68c49a8870b29ade8ac3defd799ebb12704c272dffafd602d7a36&');"></div>
+  
   <!-- Página 3 con contador -->
-  <div class="pantalla" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429532416512071/pag3.png?ex=68bf89a7&is=68be3827&hm=727703b8d5a4cc8516322f2739728d5a35422b33877b44aa14a583285107f3d5&');">
+  <div class="pantalla pag3" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429532416512071/pag3.png?ex=68bf89a7&is=68be3827&hm=727703b8d5a4cc8516322f2739728d5a35422b33877b44aa14a583285107f3d5&');">
     <div id="contador">
       <div class="tiempo">
         <div class="bloque"><div id="dias" class="numero">00</div><div class="etiqueta">Días</div></div>
@@ -184,9 +96,9 @@
     </div>
   </div>
 
-  <div class="pantalla" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429531921580173/pag4.png?ex=68bf89a7&is=68be3827&hm=94fc62771943b0150b73c80f90f07ed6c22270f36bc6c1bd2d2c5bd476cb6cf4&');"></div>
+  <div class="pantalla pag4" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429531921580173/pag4.png?ex=68bf89a7&is=68be3827&hm=94fc62771943b0150b73c80f90f07ed6c22270f36bc6c1bd2d2c5bd476cb6cf4&');"></div>
 
-  <!-- Página 5: galería -->
+  <!-- Galería -->
   <div class="pantalla p5">
     <div class="galeria">
       <div class="frame"><img src="https://cdn.discordapp.com/attachments/1414429405756919828/1414429490649497672/foto1.jpg?ex=68bf899d&is=68be381d&hm=a7bc4064a8ccbdb7eba7ea54d1c6502b4b94af53f048f8df92fc08dadaff9644&" alt="Foto 1"></div>
@@ -196,7 +108,6 @@
     </div>
   </div>
 
-  <!-- Página 6 con botón Alias -->
   <div class="pantalla p6" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429535151067188/pag6.png?ex=68bf89a8&is=68be3828&hm=e72d35901088c045f988d05158344256af7017bec30923e8c30025045cef8a83&');">
     <button onclick="abrirModal()">Ver Alias</button>
   </div>
@@ -211,25 +122,15 @@
     </div>
   </div>
 
-  <div class="pantalla" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429534689689820/pag7.png?ex=68bf89a7&is=68be3827&hm=19e30318a3d46ea247facc142cde26689eb0702ed92d9445beaad92adf8dffcc&');"></div>
+  <div class="pantalla pag7" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429534689689820/pag7.png?ex=68bf89a7&is=68be3827&hm=19e30318a3d46ea247facc142cde26689eb0702ed92d9445beaad92adf8dffcc&');"></div>
 
-  <!-- Página 8: encuesta -->
+  <!-- Página 8 encuesta -->
   <div class="pantalla p8" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429534266200155/pag8.png?ex=68bf89a7&is=68be3827&hm=e41451ecddd5cd77034eff65e6603cd0624a56e00c3498a4a00ae46f42fcb3bb&');">
     <form id="encuesta">
-      <div style="display:flex; justify-content:space-around; margin-bottom:30px;">
-        <label style="display:flex; align-items:center; gap:8px;">
-          <input type="radio" name="asistencia" value="¡Si, Confirmo!"> ¡Si, Confirmo!
-        </label>
-        <label style="display:flex; align-items:center; gap:8px;">
-          <input type="radio" name="asistencia" value="No podré asistir"> No podré asistir
-        </label>
-      </div>
-      <div style="margin-bottom:25px;">
-        <label for="nombre" style="display:block; margin-bottom:6px;">Nombre Completo</label>
-        <input type="text" id="nombre" name="nombre" placeholder="Nombre Completo" required>
-      </div>
-      <div style="margin-bottom:25px;">
-        <label for="restriccion" style="display:block; margin-bottom:6px;">¿Tenés alguna restricción alimenticia?</label>
+      <label><input type="radio" name="asistencia" value="¡Si, Confirmo!"> ¡Si, Confirmo!</label><br>
+      <label><input type="radio" name="asistencia" value="No podré asistir"> No podré asistir</label><br>
+      <label>Nombre Completo<input type="text" id="nombre" name="nombre" required></label><br>
+      <label>Restricción alimenticia
         <select id="restriccion" name="restriccion">
           <option value="Ninguna">Ninguna</option>
           <option value="Vegano">Vegano</option>
@@ -237,14 +138,12 @@
           <option value="Celiaco">Celíaco</option>
           <option value="Otra">Otra</option>
         </select>
-      </div>
-      <div style="text-align:center;">
-        <button type="submit">Enviar</button>
-      </div>
+      </label><br>
+      <button type="submit">Enviar</button>
     </form>
   </div>
 
-  <div class="pantalla" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429533863678084/pag9.png?ex=68bf89a7&is=68be3827&hm=913c2c76950905cc73d8c8e4c5298a907e9337505e146d52e6aaa07213ccc7dc&');"></div>
+  <div class="pantalla pag9" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429533863678084/pag9.png?ex=68bf89a7&is=68be3827&hm=913c2c76950905cc73d8c8e4c5298a907e9337505e146d52e6aaa07213ccc7dc&');"></div>
 
   <script>
     // ===== Contador =====
@@ -268,7 +167,7 @@
     setInterval(actualizarContador, 1000);
     actualizarContador();
 
-    // ===== Modal Alias =====
+    // ===== Modal =====
     function abrirModal(){ document.getElementById("aliasModal").style.display = "flex"; }
     function cerrarModal(){ document.getElementById("aliasModal").style.display = "none"; }
 
@@ -281,24 +180,31 @@
       if(!asistencia){ alert("Por favor selecciona si confirmas o no tu asistencia."); return; }
       if(nombre === ""){ alert("Por favor ingresa tu nombre completo."); return; }
       const data = {
-        content: `📩 Nueva respuesta a la invitación:\n\n✅ Asistencia: ${asistencia.value}\n👤 Nombre: ${nombre}\n🥗 Restricción alimenticia: ${restriccion}`
+        content: `📩 Nueva respuesta:\n✅ Asistencia: ${asistencia.value}\n👤 Nombre: ${nombre}\n🥗 Restricción: ${restriccion}`
       };
       try{
-        await fetch("https://discord.com/api/webhooks/1414395756768661614/52i1KoYOrkZuXFbmrX05q4Q1RvKub4pRd6RhTfapa7CId67jMQqQZZTo7BAo63EcsB8W", {
+        const resp = await fetch("enviar.php", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data)
         });
-        alert("¡Respuesta enviada con éxito!");
-        e.target.reset();
+        if(resp.ok){
+          alert("¡Respuesta enviada con éxito!");
+          e.target.reset();
+        }else{
+          alert("Hubo un error al enviar (respuesta no OK).");
+          console.error(await resp.text());
+        }
       }catch(err){
-        alert("Hubo un error al enviar. Intenta nuevamente.");
+        alert("Hubo un error al enviar.");
         console.error(err);
       }
     });
   </script>
 </body>
 </html>
+
+
 
 
 
