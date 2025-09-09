@@ -6,68 +6,98 @@
   <title>Invitación XV - Eli</title>
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
-    html,body{height:100%;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',sans-serif;overflow-x:hidden}
+    html,body{height:100%;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',sans-serif;overflow-x:hidden;background:#f6f8fb}
 
+    /* Pantallas */
     .pantalla{
       width:100%;
       min-height:100vh;
       background-position:center center;
       background-repeat:no-repeat;
-      background-size:cover;
+      background-size:cover; /* importante: cover evita franjas */
       background-color:#d8e7f5;
       display:flex;
       flex-direction:column;
       justify-content:center;
       align-items:center;
+      padding:24px;
     }
 
     /* Contador */
-    #contador{ text-align:center; color:#000; font-weight:700; padding:20px; background:rgba(255,255,255,0.7); border-radius:12px; max-width:95%; }
-    #contador .tiempo{ display:flex; flex-wrap:wrap; justify-content:center; align-items:flex-end; gap:20px; }
-    #contador .bloque{ display:flex; flex-direction:column; align-items:center; min-width:70px; }
-    #contador .numero{ font-size:3rem; line-height:1; }
-    #contador .etiqueta{ font-size:1rem; margin-top:6px; opacity:.9 }
-    #contador .separador{ font-size:2rem; margin:0 4px 8px; }
+    #contador{
+      text-align:center;
+      color:#000;
+      font-weight:700;
+      padding:18px 22px;
+      background:rgba(255,255,255,0.85);
+      border-radius:12px;
+      max-width:95%;
+      box-shadow:0 6px 18px rgba(0,0,0,0.12);
+    }
+    #contador .tiempo{ display:flex; flex-wrap:wrap; justify-content:center; gap:16px; align-items:flex-end; }
+    #contador .bloque{ display:flex; flex-direction:column; align-items:center; min-width:64px; }
+    #contador .numero{ font-size:2.6rem; line-height:1; letter-spacing:0.5px; }
+    #contador .etiqueta{ font-size:0.98rem; margin-top:6px; opacity:.92; }
+    #contador .separador{ font-size:1.9rem; margin:0 6px 8px; }
 
     /* Galería */
-    .p5{ background:#fff; padding:40px 0; }
-    .galeria{ width:min(1100px, 92%); margin:auto; display:grid; grid-template-columns:repeat(2, 1fr); gap:20px; }
-    .frame{ aspect-ratio:3/4; border-radius:16px; overflow:hidden; box-shadow:0 6px 20px rgba(0,0,0,.18); }
+    .p5{ background:#fff; padding:28px 0; }
+    .galeria{ width:min(1100px, 94%); margin:auto; display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; align-items:start; }
+    .frame{ aspect-ratio:3/4; border-radius:12px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,.12); background:#eee; }
     .frame img{ width:100%; height:100%; object-fit:cover; display:block; }
 
     /* Botón Alias */
     .p6 button{
       margin-top:auto; margin-bottom:20px;
-      padding:12px 20px; font-size:1rem;
+      padding:10px 18px; font-size:1rem;
       background:#000; color:#fff; border:none; border-radius:10px;
       cursor:pointer;
+      box-shadow:0 6px 12px rgba(0,0,0,0.18);
     }
 
     /* Modal */
-    .modal{ display:none; position:fixed; inset:0; background:rgba(0,0,0,.7); justify-content:center; align-items:center; z-index:1000; padding:10px; }
-    .modal-content{ background:#fff; padding:20px; border-radius:14px; width:90%; max-width:420px; text-align:center; }
+    .modal{ display:none; position:fixed; inset:0; background:rgba(0,0,0,.6); justify-content:center; align-items:center; z-index:1000; padding:12px; }
+    .modal-content{ background:#fff; padding:18px; border-radius:12px; width:92%; max-width:420px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.25); }
 
     /* Encuesta */
     .p8 form{
-      width:90%; max-width:520px;
-      background:rgba(255,255,255,.96);
-      padding:20px; border-radius:16px;
+      width:95%; max-width:560px;
+      background:rgba(255,255,255,.98);
+      padding:18px; border-radius:12px;
       display:grid; gap:10px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.08);
     }
     .p8 label{ display:grid; gap:6px; color:#111; font-size:1rem; }
-    .p8 input[type="text"], .p8 select{ width:100%; padding:10px 12px; border-radius:10px; border:1px solid #ddd; font-size:1rem; }
-    .p8 button[type="submit"]{ margin-top:6px; padding:12px 18px; border:none; border-radius:10px; background:#111; color:#fff; font-weight:700; cursor:pointer; }
+    .p8 input[type="text"], .p8 select{ width:100%; padding:10px 12px; border-radius:10px; border:1px solid #e0e0e0; font-size:1rem; background:#fff; }
+    .p8 button[type="submit"]{ margin-top:6px; padding:12px 16px; border:none; border-radius:10px; background:#111; color:#fff; font-weight:700; cursor:pointer; }
 
-    /* Mobile */
-    @media (max-width:768px){
-      .galeria{ grid-template-columns:1fr; gap:16px; }
-      #contador .numero{ font-size:2rem; }
-      #contador .etiqueta{ font-size:0.9rem; }
-      .pantalla{ background-size:contain; background-color:#000; }
-      .modal-content{ width:100%; max-width:95%; }
-      .p8 form{ width:95%; padding:16px; }
-      .p6 button{ font-size:0.9rem; padding:10px 16px; }
+    /* Ajustes ligeros para desktop grande */
+    @media (min-width:1200px){
+      .pantalla{ padding:40px; }
+      .galeria{ gap:20px; }
     }
+
+    /* Mobile: compactar todo para vertical */
+    @media (max-width:768px){
+      .pantalla{ padding:16px; background-size:cover; }
+      .galeria{ grid-template-columns:1fr; gap:10px; width:96%; }
+      .p5{ padding:18px 0; }
+      #contador{ padding:10px 12px; }
+      #contador .numero{ font-size:1.6rem; }
+      #contador .etiqueta{ font-size:0.78rem; margin-top:4px; }
+      #contador .bloque{ min-width:44px; }
+      #contador .separador{ font-size:1.2rem; margin:0 6px 6px; }
+      .frame{ border-radius:10px; }
+      .p8 form{ padding:12px; gap:8px; width:96%; }
+      .p8 label{ font-size:0.92rem; }
+      .p8 input[type="text"], .p8 select{ font-size:0.92rem; padding:8px 10px; }
+      .p8 button[type="submit"]{ padding:10px 14px; font-size:0.92rem; }
+      .p6 button{ padding:8px 12px; font-size:0.9rem; }
+      .modal-content{ padding:12px; width:96%; }
+    }
+
+    /* Evitar que inputs se expandan de más en iOS */
+    input, button, select, textarea { -webkit-appearance: none; -moz-appearance: none; appearance: none; }
   </style>
 </head>
 <body>
@@ -80,14 +110,14 @@
 
   <!-- Página 3 con contador -->
   <div class="pantalla" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429532416512071/pag3.png?ex=68bf89a7&is=68be3827&hm=727703b8d5a4cc8516322f2739728d5a35422b33877b44aa14a583285107f3d5&');">
-    <div id="contador">
-      <div class="tiempo">
+    <div id="contador" aria-live="polite">
+      <div class="tiempo" role="timer" aria-atomic="true">
         <div class="bloque"><div id="dias" class="numero">00</div><div class="etiqueta">Días</div></div>
-        <div class="separador">:</div>
+        <div class="separador" aria-hidden="true">:</div>
         <div class="bloque"><div id="horas" class="numero">00</div><div class="etiqueta">Hs</div></div>
-        <div class="separador">:</div>
+        <div class="separador" aria-hidden="true">:</div>
         <div class="bloque"><div id="minutos" class="numero">00</div><div class="etiqueta">Min</div></div>
-        <div class="separador">:</div>
+        <div class="separador" aria-hidden="true">:</div>
         <div class="bloque"><div id="segundos" class="numero">00</div><div class="etiqueta">Seg</div></div>
       </div>
     </div>
@@ -108,10 +138,10 @@
 
   <!-- Página 6 con alias -->
   <div class="pantalla p6" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429535151067188/pag6.png?ex=68bf89a8&is=68be3828&hm=e72d35901088c045f988d05158344256af7017bec30923e8c30025045cef8a83&');">
-    <button onclick="abrirModal()">Ver Alias</button>
+    <button onclick="abrirModal()" aria-haspopup="dialog">Ver Alias</button>
   </div>
 
-  <div class="modal" id="aliasModal">
+  <div class="modal" id="aliasModal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal-content">
       <h2>Eliana Nahiara Ramirez</h2>
       <p>Mercado Pago</p>
@@ -148,12 +178,14 @@
   <div class="pantalla" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429533863678084/pag9.png?ex=68bf89a7&is=68be3827&hm=913c2c76950905cc73d8c8e4c5298a907e9337505e146d52e6aaa07213ccc7dc&');"></div>
 
   <script>
+    // Contador
     function actualizarContador(){
       const fechaEvento = new Date("2025-11-22T21:00:00").getTime();
       const ahora = Date.now();
       const diff = fechaEvento - ahora;
       if(diff <= 0){
-        document.getElementById("contador").innerHTML = "<h2>¡Llegó el gran día! 🎉</h2>";
+        const c = document.getElementById("contador");
+        if(c) c.innerHTML = "<h2>¡Llegó el gran día! 🎉</h2>";
         return;
       }
       const d = Math.floor(diff / (1000*60*60*24));
@@ -165,11 +197,22 @@
       document.getElementById("minutos").textContent  = String(m).padStart(2,'0');
       document.getElementById("segundos").textContent = String(s).padStart(2,'0');
     }
-    setInterval(actualizarContador, 1000); actualizarContador();
+    setInterval(actualizarContador, 1000);
+    actualizarContador();
 
-    function abrirModal(){ document.getElementById("aliasModal").style.display = "flex"; }
-    function cerrarModal(){ document.getElementById("aliasModal").style.display = "none"; }
+    // Modal
+    function abrirModal(){
+      const m = document.getElementById("aliasModal");
+      m.style.display = "flex";
+      m.setAttribute("aria-hidden","false");
+    }
+    function cerrarModal(){
+      const m = document.getElementById("aliasModal");
+      m.style.display = "none";
+      m.setAttribute("aria-hidden","true");
+    }
 
+    // Envío encuesta (mantengo tu lógica original)
     document.getElementById("encuesta").addEventListener("submit", async function(e){
       e.preventDefault();
       const asistencia = document.querySelector("input[name='asistencia']:checked");
@@ -177,8 +220,8 @@
       const restriccion = document.getElementById("restriccion").value;
       if(!asistencia){ alert("Seleccioná si confirmás o no tu asistencia."); return; }
       if(nombre === ""){ alert("Ingresá tu nombre completo."); return; }
-      const payload = { 
-        content: `📩 Nueva respuesta:\n✅ Asistencia: ${asistencia.value}\n👤 Nombre: ${nombre}\n🥗 Restricción: ${restriccion}` 
+      const payload = {
+        content: `📩 Nueva respuesta:\n✅ Asistencia: ${asistencia.value}\n👤 Nombre: ${nombre}\n🥗 Restricción: ${restriccion}`
       };
       try{
         const resp = await fetch("enviar.php", {
