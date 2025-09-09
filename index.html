@@ -1,4 +1,4 @@
-OCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -6,7 +6,7 @@ OCTYPE html>
   <title>Invitación XV - Eli</title>
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
-    html,body{height:100%;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',sans-serif}
+    html,body{height:100%;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',sans-serif;overflow-x:hidden}
 
     .pantalla{
       width:100%;
@@ -14,7 +14,7 @@ OCTYPE html>
       background-position:center center;
       background-repeat:no-repeat;
       background-size:cover;
-      background-color:#d8e7f5; /* 👈 color de relleno suave */
+      background-color:#d8e7f5;
       display:flex;
       flex-direction:column;
       justify-content:center;
@@ -22,7 +22,7 @@ OCTYPE html>
     }
 
     /* Contador */
-    #contador{ text-align:center; color:#000; font-weight:700; padding:20px; background:rgba(255,255,255,0.7); border-radius:12px; }
+    #contador{ text-align:center; color:#000; font-weight:700; padding:20px; background:rgba(255,255,255,0.7); border-radius:12px; max-width:95%; }
     #contador .tiempo{ display:flex; flex-wrap:wrap; justify-content:center; align-items:flex-end; gap:20px; }
     #contador .bloque{ display:flex; flex-direction:column; align-items:center; min-width:70px; }
     #contador .numero{ font-size:3rem; line-height:1; }
@@ -40,10 +40,11 @@ OCTYPE html>
       margin-top:auto; margin-bottom:20px;
       padding:12px 20px; font-size:1rem;
       background:#000; color:#fff; border:none; border-radius:10px;
+      cursor:pointer;
     }
 
     /* Modal */
-    .modal{ display:none; position:fixed; inset:0; background:rgba(0,0,0,.7); justify-content:center; align-items:center; z-index:1000; }
+    .modal{ display:none; position:fixed; inset:0; background:rgba(0,0,0,.7); justify-content:center; align-items:center; z-index:1000; padding:10px; }
     .modal-content{ background:#fff; padding:20px; border-radius:14px; width:90%; max-width:420px; text-align:center; }
 
     /* Encuesta */
@@ -53,15 +54,19 @@ OCTYPE html>
       padding:20px; border-radius:16px;
       display:grid; gap:10px;
     }
-    .p8 label{ display:grid; gap:6px; color:#111; }
-    .p8 input[type="text"], .p8 select{ width:100%; padding:10px 12px; border-radius:10px; border:1px solid #ddd; }
-    .p8 button[type="submit"]{ margin-top:6px; padding:12px 18px; border:none; border-radius:10px; background:#111; color:#fff; font-weight:700; }
+    .p8 label{ display:grid; gap:6px; color:#111; font-size:1rem; }
+    .p8 input[type="text"], .p8 select{ width:100%; padding:10px 12px; border-radius:10px; border:1px solid #ddd; font-size:1rem; }
+    .p8 button[type="submit"]{ margin-top:6px; padding:12px 18px; border:none; border-radius:10px; background:#111; color:#fff; font-weight:700; cursor:pointer; }
 
     /* Mobile */
     @media (max-width:768px){
       .galeria{ grid-template-columns:1fr; gap:16px; }
       #contador .numero{ font-size:2rem; }
       #contador .etiqueta{ font-size:0.9rem; }
+      .pantalla{ background-size:contain; background-color:#000; }
+      .modal-content{ width:100%; max-width:95%; }
+      .p8 form{ width:95%; padding:16px; }
+      .p6 button{ font-size:0.9rem; padding:10px 16px; }
     }
   </style>
 </head>
