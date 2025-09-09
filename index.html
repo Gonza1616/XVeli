@@ -72,8 +72,9 @@
     @media (max-width:768px) and (orientation: portrait){
       .pantalla{
         padding: 12px;
-        background-size: 100% auto; /* CORRECCIÓN FINAL */
-        background-color: #e0eef7;  /* FONDO DE RELLENO */
+        background-size: 100% auto;
+        background-color: #e0eef7;
+        min-height: 100dvh; /* AJUSTE DE ALTURA AQUÍ */
       }
       .galeria{ grid-template-columns:1fr; gap:10px; }
       #contador{ padding:10px; }
@@ -96,7 +97,7 @@
 
   <div class="pantalla" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429532756377630/pag2.png?ex=68bf89a7&is=68be3827&hm=a0456fff9bd68c49a8870b29ade8ac3defd799ebb12704c272dffafd602d7a36&');"></div>
 
-  <div class="pantalla" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429532416512071/pag3.png?ex=68bf89a7&is=68be3827&hm=727703b8d5a4cc8516322f2739728d5a35422b33877b44aa14a583285107f3d5&');">
+  <div class="pantalla" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429532416512071/pag3.png?ex=68bf89a7&is=68be3827&hm=727703b8d5a4cc8516322f273928d5a35422b33877b44aa14a583285107f3d5&');">
     <div id="contador">
       <div class="tiempo">
         <div class="bloque"><div id="dias" class="numero">00</div><div class="etiqueta">Días</div></div>
@@ -134,7 +135,7 @@
     </div>
   </div>
 
-  <div class="pantalla" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429534689689820/pag7.png?ex=68bf89a7&is=68be3827&hm=19e30318a3d46ea247facc142cde26689eb0702ed92d9445beaad92adf8dffcc&');"></div>
+  <div class="pantalla" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429534689689820/pag7.png?ex=68bf89a7&is=68be3827&hm=19e30318a3d46ea247facc142cde26689eb0702ed92d9442beaad92adf8dffcc&');"></div>
 
   <div class="pantalla p8" style="background-image:url('https://cdn.discordapp.com/attachments/1414429405756919828/1414429534266200155/pag8.png?ex=68bf89a7&is=68be3827&hm=e41451ecddd5cd77034eff65e6603cd0624a56e00c3498a4a00ae46f42fcb3bb&');">
     <form id="encuesta" novalidate>
