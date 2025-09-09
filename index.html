@@ -70,9 +70,10 @@
 
     /* Portrait (vertical en celular) */
     @media (max-width:768px) and (orientation: portrait){
-      .pantalla{ 
-        padding:12px; 
-        background-size: cover; /* CORRECCIÓN APLICADA AQUÍ */
+      .pantalla{
+        padding: 12px;
+        background-size: 100% auto; /* CORRECCIÓN FINAL */
+        background-color: #e0eef7;  /* FONDO DE RELLENO */
       }
       .galeria{ grid-template-columns:1fr; gap:10px; }
       #contador{ padding:10px; }
