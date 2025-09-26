@@ -16,7 +16,7 @@ html, body {margin:0; padding:0; height:100%; font-family: Montserrat, sans-seri
 .section {height:100vh; display:flex; flex-direction: column; justify-content:center; align-items:center; text-align:center; padding:20px; background: var(--celeste);}
 .hero h1 {font-family: 'Great Vibes', cursive; font-size: 170px; color: var(--gold); margin:0; line-height:1;}
 .hero .mis-xv {font-family:'Playfair Display', serif; font-weight:700; color: var(--gold); font-size:80px; line-height:1.1;}
-.hero .mis-xv-block {display:flex; flex-direction:column; align-items:center; margin-bottom:35px; transform:translateX(20px);} /* pequeño ajuste a la derecha */
+.hero .mis-xv-block {display:flex; flex-direction:column; align-items:center; margin-bottom:35px; transform:translateX(20px);}
 .countdown-label {font-family:'Playfair Display', serif; font-size:50px; color: var(--text); margin-top:70px; font-weight:700;}
 .countdown {font-family: 'Playfair Display', serif; font-size:65px; color: var(--text); margin-top:15px; font-weight:700;}
 .btn {background: var(--gold); color:white; padding:18px 30px; border-radius:15px; border:0; cursor:pointer; font-weight:700; margin-top:20px; font-size:18px;}
@@ -127,14 +127,28 @@ iframe {border:0; border-radius:12px; width:90%; max-width:800px; height:400px; 
 </div>
 
 <script>
-// Simple scroll por secciones
-let currentSection=0;
+// Scroll por secciones solo en escritorio
+const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 const sections=document.querySelectorAll('.section');
-window.addEventListener('wheel',e=>{
-  if(e.deltaY>0 && currentSection<sections.length-1) currentSection++;
-  else if(e.deltaY<0 && currentSection>0) currentSection--;
-  sections[currentSection].scrollIntoView({behavior:'smooth'});
-});
+let currentSection = 0;
+
+if(!isMobile){
+  window.addEventListener('wheel', e=>{
+    if(e.deltaY>0 && currentSection<sections.length-1) currentSection++;
+    else if(e.deltaY<0 && currentSection>0) currentSection--;
+    sections[currentSection].scrollIntoView({behavior:'smooth'});
+  });
+} else {
+  // Swipe táctil en móvil
+  let startY = 0;
+  window.addEventListener('touchstart', e => { startY = e.touches[0].clientY; });
+  window.addEventListener('touchend', e => {
+    let endY = e.changedTouches[0].clientY;
+    if(endY < startY - 50 && currentSection < sections.length-1) currentSection++;
+    if(endY > startY + 50 && currentSection > 0) currentSection--;
+    sections[currentSection].scrollIntoView({behavior:'smooth'});
+  });
+}
 
 // Temporizador
 function updateCountdown(){
@@ -160,7 +174,6 @@ function sendWhatsApp(){
   const note=encodeURIComponent(document.getElementById('guestNote').value||'');
   if(!name){alert('Por favor ingresá tu nombre.'); return;}
   const text=`Confirmación:%0ANombre:${name}%0AAcompañantes/nota:${note}%0AAsiste:${attend}%0ATeléfono:${phone}`;
-  // 📲 Número fijo: +54 9 11 4422-2329
   window.open(`https://wa.me/5491144222329?text=${text}`,'_blank');
   document.getElementById('confirmation').textContent='Mensaje listo para enviar!';
 }
@@ -176,3 +189,4 @@ music.play().catch(()=>{console.log('Autoplay bloqueado por navegador.');});
 
 </body>
 </html>
+
