@@ -155,26 +155,19 @@ iframe {border:0; border-radius:12px; width:90%; max-width:800px; height:400px; 
 </div>
 
 <script>
-// Simple scroll por secciones
-let currentSection=0;
-const sections=document.querySelectorAll('.section');
-window.addEventListener('wheel',e=>{
-  if(e.deltaY>0 && currentSection<sections.length-1) currentSection++;
-  else if(e.deltaY<0 && currentSection>0) currentSection--;
-  sections[currentSection].scrollIntoView({behavior:'smooth'});
-});
+// Detectar móvil
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-// Agregar soporte táctil para celulares
-let touchStartY = 0;
-window.addEventListener('touchstart', e => {
-  touchStartY = e.touches[0].clientY;
-});
-window.addEventListener('touchend', e => {
-  let touchEndY = e.changedTouches[0].clientY;
-  if(touchStartY - touchEndY > 50 && currentSection<sections.length-1) currentSection++;
-  else if(touchEndY - touchStartY > 50 && currentSection>0) currentSection--;
-  sections[currentSection].scrollIntoView({behavior:'smooth'});
-});
+// Scroll por secciones solo en escritorio
+if(!isMobile){
+  let currentSection=0;
+  const sections=document.querySelectorAll('.section');
+  window.addEventListener('wheel',e=>{
+    if(e.deltaY>0 && currentSection<sections.length-1) currentSection++;
+    else if(e.deltaY<0 && currentSection>0) currentSection--;
+    sections[currentSection].scrollIntoView({behavior:'smooth'});
+  });
+}
 
 // Temporizador
 function updateCountdown(){
