@@ -19,7 +19,6 @@ html, body {
   font-family: Montserrat, sans-serif;
   color: var(--text);
   background: var(--celeste);
-  overflow-x:hidden;
 }
 .section {
   min-height:100vh;
@@ -54,6 +53,10 @@ iframe {border:0; border-radius:12px; width:90%; max-width:800px; height:400px; 
 
 /* Ajustes para móviles */
 @media (max-width: 768px) {
+  html, body {
+    height:auto;
+    overflow-y: auto; /* Permitir scroll normal en móvil */
+  }
   .gallery img {
     width: 90%;
     height: auto;
